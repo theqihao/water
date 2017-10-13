@@ -11,7 +11,7 @@ $addr = $_POST['addr'];
 $sql = "insert into info values('$id_type', '$user', '$passwd', '$addr')";
 $ret = query($conn, $sql);
 mysqli_close($conn);
-include "user.php";
+set_user();
 
 ?>
 

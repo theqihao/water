@@ -58,7 +58,10 @@ var reMethod = "GET",
 
 $(document).ready(function() {
 
-	var rand = Math.random();
+	var rand = "";
+	for(var i = 0; i < 6; i++) { 
+		rand += Math.floor(Math.random()*10); 
+	} 
 
 	$('#send_code').click(function() {
 		if ($('#user').val() == "") {
@@ -77,8 +80,13 @@ $(document).ready(function() {
 			dest: $('#user').val()
 		},
 		function(data, status){
-			alert("数据: \n" + data + "\n状态: " + status);
-			$('#send_code').html("<font color='red'><b>验证码已发送</b></font>");
+			//alert("数据: \n" + data + "\n状态: " + status);
+			if (status == 'success') {
+				$('#send_code').html("<font color='red'><b>验证码已发送</b></font>");
+			} else {
+				$('#send_code').html("<font color='red'><b>验证码发送失败</b></font>");
+			}
+			
 		});
 
 

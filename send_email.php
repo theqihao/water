@@ -21,7 +21,7 @@ $mail->Body = "The code is " . $code;       //这是发送的邮件的内容
 if(!$mail->Send()) {
     die("发送失败！");
 } else {
-    include('user.php');
+    
 } 
 
 ?>
