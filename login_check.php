@@ -13,6 +13,7 @@ $db_pass = $row['pass'];
 $db_pass = md5($db_pass); 
 
 if ($pass == $db_pass) {
+    SetCookie("id", $user);
     set_user();
 } else {
     _user_error();
