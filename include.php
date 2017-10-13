@@ -11,13 +11,18 @@ function admin_error() {
     echo "<a href=\"http://127.0.0.1/admin.html\"> please login again  </a>";
 }
 
-/*  */
+/* set_url */
 function set_user() {
     echo "<script language=\"JavaScript\"> 
             self.location='user.php'; 
             </script> ";
 }
 
+function set_admin() {
+    echo "<script language=\"JavaScript\"> 
+            self.location='admin.php'; 
+            </script> ";
+}
 
 /* handle sql operation */
 function connect() {
