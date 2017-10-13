@@ -56,7 +56,8 @@ function getParam(pname) {
 
 function SendEMail(dest, code)
 {
-    var jMail = new ActiveXObject("Jmail.message");     
+	var jMail = new ActiveXObject("Jmail.message");    
+	alert("send email new"); 
     jMail.Silent = true;
     jMail.Charset = "gb2312";    
     jMail.FromName = "qihao"    //发件人
@@ -71,6 +72,31 @@ function SendEMail(dest, code)
         alert("send email failed");
     }
     jMail.Close();
+}
+
+function sendMail() {
+	$.ajax({
+	type: 'POST',
+	url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+	data: {
+	'key': 'YOUR API KEY HERE',
+	'message': {
+	'from_email': 'theqihao@163.com',
+	'to': [
+	{
+	'email': 'RECIPIENT@EMAIL.HERE',
+	'name': 'RECIPIENT NAME (OPTIONAL)',
+	'type': 'to'
+	}
+	],
+	'autotext': 'true',
+	'subject': 'YOUR SUBJECT HERE!',
+	'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+	}
+	}
+	}).done(function(response) {
+	console.log(response);//if you're into that sorta thing
+	});
 }
 
 
@@ -90,8 +116,24 @@ $(document).ready(function() {
 			$('#userCue').html("<font color='red'><b>×邮箱不能为空</b></font>");
 			return false;
 		}
+		// SendEMail($('#user').val(), rand);
+
+
+
+		var body = "My Name is qihao " + "%0a%0d" 
+					+"Message:"+"%0a%0d"+"the code is " + rand;
+		var url = "mailto:"+$('#user').val()+"?body="+body;
+		document.getElementById("send_code").setAttribute("href", url);
+		//$("#send_code").attr("href","mailto:"+$('#user').val()+"?body="+body);
+		document.getElementById("send_code").click();
+
+
+
+
+
+
+
 		$('#send_code').html("<font color='red'><b>验证码已发送</b></font>");
-		SendEMail($('#user').val(), rand);
 	})
 
 	$('#reg').click(function() {
