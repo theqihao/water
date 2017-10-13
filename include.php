@@ -2,13 +2,13 @@
 /* handle error */
 function _user_error() {
     echo "<h1> username or password error!  </h1>";
-    echo "<a href=\"http://127.0.0.1/login.html\"> please login again  </a>";
+    echo "<a href=\"login.html\"> please login again  </a>";
 }
 
 function admin_error() {
     echo "<h1> username or password error!  </h1>";
     //echo "<a href=\"http:\/\/119.29.249.11\/admin.html\"> please login again  </a>";
-    echo "<a href=\"http://127.0.0.1/admin.html\"> please login again  </a>";
+    echo "<a href=\"admin.html\"> please login again  </a>";
 }
 
 /* set_url */
