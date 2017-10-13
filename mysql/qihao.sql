@@ -32,12 +32,13 @@ insert into info values("email", "qihao", "199612", "fafds");
 
 create table water (
     id varchar(32) not null,
-    time datetime,
+    _time datetime,
     num int not null,
     pay_type varchar(32) not null,
     pay float,
+    confirm int not null,
     
-    primary key (id, time),
+    primary key (id, _time),
     foreign key (id) references info(id)
     on delete cascade
     on update cascade,

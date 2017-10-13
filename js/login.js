@@ -53,53 +53,6 @@ function getParam(pname) {
     } 
 }  
 
-
-function SendEMail(dest, code)
-{
-	var jMail = new ActiveXObject("Jmail.message");    
-	alert("send email new"); 
-    jMail.Silent = true;
-    jMail.Charset = "gb2312";    
-    jMail.FromName = "qihao"    //发件人
-    jMail.From = "theqihao@163.com";   //发送人的邮件地址
-    jMail.AddRecipient(dest);  //收件人的邮件地址
-    jMail.Subject = "瑜伽山泉邮箱验证";
-    jMail.Body = "The code is " + code;    
-    jMail.MailServerUserName="theqihao";
-    jMail.MailServerPassWord="199612";        
-    var ret = jMail.Send("smtp.163.com");    
-    if(ret == false) {
-        alert("send email failed");
-    }
-    jMail.Close();
-}
-
-function sendMail() {
-	$.ajax({
-	type: 'POST',
-	url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-	data: {
-	'key': 'YOUR API KEY HERE',
-	'message': {
-	'from_email': 'theqihao@163.com',
-	'to': [
-	{
-	'email': 'RECIPIENT@EMAIL.HERE',
-	'name': 'RECIPIENT NAME (OPTIONAL)',
-	'type': 'to'
-	}
-	],
-	'autotext': 'true',
-	'subject': 'YOUR SUBJECT HERE!',
-	'html': 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
-	}
-	}
-	}).done(function(response) {
-	console.log(response);//if you're into that sorta thing
-	});
-}
-
-
 var reMethod = "GET",
 	pwdmin = 6;
 
@@ -119,21 +72,22 @@ $(document).ready(function() {
 		// SendEMail($('#user').val(), rand);
 
 
-
-		var body = "My Name is qihao " + "%0a%0d" 
-					+"Message:"+"%0a%0d"+"the code is " + rand;
-		var url = "mailto:"+$('#user').val()+"?body="+body;
-		document.getElementById("send_code").setAttribute("href", url);
-		//$("#send_code").attr("href","mailto:"+$('#user').val()+"?body="+body);
-		document.getElementById("send_code").click();
-
-
-
+		$.post("send_email.php",{
+			code: rand,
+			dest: $('#user').val()
+		},
+		function(data, status){
+			alert("数据: \n" + data + "\n状态: " + status);
+			$('#send_code').html("<font color='red'><b>验证码已发送</b></font>");
+		});
 
 
 
 
-		$('#send_code').html("<font color='red'><b>验证码已发送</b></font>");
+
+
+
+		
 	})
 
 	$('#reg').click(function() {
