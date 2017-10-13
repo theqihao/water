@@ -1,4 +1,4 @@
-cp ../html/* ./
+cp -R ../html/* ./
 echo $*
 git add .
 git commit -m "$*"
