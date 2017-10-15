@@ -30,6 +30,8 @@ function connect() {
     $dbuser = 'root';
     $dbpass = '0';
     $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
+    mysqli_query($conn, "set character set 'utf8'");//读库 
+    mysqli_query($conn, "set names 'utf8'");//写库 
     if (!$conn) {
         echo "<h1> database connect failed! </h1>";
         die('Could not connect' . mysql_error());
@@ -40,9 +42,14 @@ function connect() {
 }
 
 function query($conn, $sql) {
+    //mysql_query("set names 'utf8'");
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
+        echo "query error";
+        echo "query error";
+        echo mysql_error($conn);
         die('query data error' . mysql_error($conn));
+        echo "query error";
         exit();
     }
     return $ret;

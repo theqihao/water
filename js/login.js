@@ -190,7 +190,8 @@ $(document).ready(function() {
 				border: "1px solid red",
 				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='red'><b>×验证码不正确</b></font>" + rand);
+			// $('#userCue').html("<font color='red'><b>×验证码不正确</b></font>" + rand);
+			$('#userCue').html("<font color='red'><b>×验证码不正确</b></font>");
 			return false;
 		}
 

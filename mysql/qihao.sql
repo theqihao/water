@@ -24,13 +24,13 @@ create table info (
     pass varchar(32) not null,
     area varchar(128) not null,
     build varchar(128) not null,
-    dorm int not null,
+    dorm varchar(128) not null,
 
     primary key(id),
     check(id_type in ('email', 'qq'))
 )character set = utf8;
 
-insert into info values("email", "qihao", "199612", "东区", "沁苑东十一舍", 526);
+insert into info values("email", "qihao", "199612", "东区", "沁苑东十一舍", "526");
 
 create table water (
     id varchar(32) not null,
