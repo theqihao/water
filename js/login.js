@@ -58,6 +58,7 @@ var reMethod = "GET",
 
 $(document).ready(function() {
 
+
 	var rand = "";
 	for(var i = 0; i < 6; i++) { 
 		rand += Math.floor(Math.random()*10); 

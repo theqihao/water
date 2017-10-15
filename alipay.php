@@ -21,7 +21,7 @@ echo"
                 <label class='input-tips' for='u' style='align:center;margin-left:30%;'>应付：{$cnt} 元</label>
 			</div>
 </div>
-<img src='./alipay.jpg' name='Insert_logo' width='100%' height='450' id='Insert_logo' style='background-color: #C6D580; display:block; center no-repeat;' />
+<img src='./images/alipay.jpg' name='Insert_logo' width='100%' height='450' id='Insert_logo' style='background-color: #C6D580; display:block; center no-repeat;' />
 ";
 
 echo "				

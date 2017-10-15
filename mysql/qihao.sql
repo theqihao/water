@@ -22,13 +22,15 @@ create table info (
     id_type varchar(16) not null,
     id varchar(32) not null,
     pass varchar(32) not null,
-    addr varchar(128) not null,
+    area varchar(128) not null,
+    build varchar(128) not null,
+    dorm int not null,
 
     primary key(id),
     check(id_type in ('email', 'qq'))
-);
+)character set = utf8;
 
-insert into info values("email", "qihao", "199612", "fafds");
+insert into info values("email", "qihao", "199612", "东区", "沁苑东十一舍", 526);
 
 create table water (
     id varchar(32) not null,
@@ -43,5 +45,5 @@ create table water (
     on delete cascade
     on update cascade,
     check(pay_type in ('online', 'cash'))
-);
+)character set = utf8;
 
