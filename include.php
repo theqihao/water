@@ -45,9 +45,9 @@ function query($conn, $sql) {
     //mysql_query("set names 'utf8'");
     $ret = mysqli_query($conn, $sql);
     if (!$ret) {
-        echo "query error";
-        echo "query error";
-        echo mysql_error($conn);
+        // echo "query error";
+        // echo "query error";
+        // echo mysql_error($conn);
         die('query data error' . mysql_error($conn));
         echo "query error";
         exit();
