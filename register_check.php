@@ -12,12 +12,12 @@ $area = $_POST['area'];
 $build = $_POST['build'];
 $dorm = $_POST['dorm'];
 
-echo $id_type;
-echo $user;
-echo $passwd;
-echo $area;
-echo $build;
-echo $dorm;
+// echo $id_type;
+// echo $user;
+// echo $passwd;
+// echo $area;
+// echo $build;
+// echo $dorm;
 
 $sql = "insert into info values('$id_type', '$user', '$passwd', '$area', '$build', '$dorm')";
 $ret = query($conn, $sql);
