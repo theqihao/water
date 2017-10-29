@@ -10,6 +10,7 @@ echo"
     <thead>    
     	<tr>
             <th scope='col' >用户ID</th>
+			<th scope='col' >地址</th>
             <th scope='col' >下单时间</th>
 			<th scope='col' >订购数目</th>
 			<th scope='col' >支付方式</th>
@@ -31,14 +32,21 @@ if (!empty($id)&& $id!='*'&&$id!='#')
 	}
 	else{
 		while($row = mysqli_fetch_array($ret)){
+			$id = $row['id'];
 			$time = $row['_time'];
 			$num = $row['num'];
 			$paytype = $row['pay_type'];
-
+			
+			$sql = "select * from info where id = '$id'";
+			$ret2 = query($conn, $sql);
+			$row2 = mysqli_fetch_array($ret2);
+			$addr = $row2['area'].$row2['build'].$row2['dorm'];
+			
 			echo"
 				<tbody>
 				<tr>
 					<th scope='row'>{$row['id']}</th>
+					<td>{$addr}</td>
 					<td>{$time}</td>
 					<td>{$num}</td>
 					<td>{$paytype}</td>
@@ -67,10 +75,16 @@ else if($id=='*'){
 			$num = $row['num'];
 			$paytype = $row['pay_type'];
 
+			$sql = "select * from info where id = '$id'";
+			$ret2 = query($conn, $sql);
+			$row2 = mysqli_fetch_array($ret2);
+			$addr = $row2['area'].$row2['build'].$row2['dorm'];
+			
 			echo"
 				<tbody>
 				<tr>
 					<th scope='row'>{$id}</th>
+					<td>{$addr}</td>
 					<td>{$time}</td>
 					<td>{$num}</td>
 					<td>{$paytype}</td>
@@ -99,6 +113,12 @@ else{
 			$butval='';
 			$able='';
 			$butcolor='';
+			
+			$sql = "select * from info where id = '$id'";
+			$ret2 = query($conn, $sql);
+			$row2 = mysqli_fetch_array($ret2);
+			$addr = $row2['area'].$row2['build'].$row2['dorm'];
+			
 			if($row['confirm']==1){
 				$butval="订单已完成";
 				$able="disabled";
@@ -112,6 +132,7 @@ else{
 				<tbody>
 				<tr>
 					<th scope='row'>{$id}</th>
+					<td>{$addr}</td>
 					<td>{$time}</td>
 					<td>{$num}</td>
 					<td>{$paytype}</td>
